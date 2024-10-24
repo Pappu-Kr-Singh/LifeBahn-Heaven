@@ -5,7 +5,7 @@ const Footer = () => {
     <>
       <div className="container ">
         <footer className="py-3 my-4">
-          <ul className="nav bg-dark justify-content-center border-bottom pb-3 mb-3">
+          {/* <ul className="nav bg-dark justify-content-center border-bottom pb-3 mb-3">
             <li className="nav-item">
               <a href="#" className="nav-link px-2 ">
                 Home
@@ -31,8 +31,11 @@ const Footer = () => {
                 About
               </a>
             </li>
-          </ul>
-          <p className="text-center ">© 2024 Company, Inc</p>
+          </ul> */}
+          <hr />
+          <p className="text-center ">
+            ©LifeBahn Global S.L. 2024 Company, Inc
+          </p>
         </footer>
       </div>
     </>

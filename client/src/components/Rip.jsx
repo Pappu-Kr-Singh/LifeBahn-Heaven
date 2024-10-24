@@ -3,6 +3,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Flowers from "./RipTabsData/Flowers";
+import Photos from "./RipTabsData/Photos";
+import Memoreblia from "./RipTabsData/Memoreblia";
+import Document from "./RipTabsData/Document";
+const PageOne = () => <div>This is the content of Page One.</div>;
+const PageTwo = () => <div>This is the content of Page Two.</div>;
+const PageThree = () => <div>This is the content of Page Three.</div>;
+const PageFour = () => <div>DataDataDataDataDataData</div>;
 
 function Rip() {
   const { currentUser } = useContext(AuthContext);
@@ -12,7 +20,7 @@ function Rip() {
   const [users, setUsers] = useState([]); // Store normal users
   const [selectedUser, setSelectedUser] = useState(""); // Store selected user ID
   const [showDropdown, setShowDropdown] = useState(false); // Control dropdown visibility
-
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
   // console.log(currentUser.data.user);
   // console.log(_id);
 
@@ -90,6 +98,26 @@ function Rip() {
       day: "numeric",
     });
   };
+  // **************   Tab Buttons
+  const [activeTab, setActiveTab] = useState(1); // State to keep track of active tab
+
+  // Function to render the content based on active tab
+  const renderContent = () => {
+    switch (activeTab) {
+      case 1:
+        return <Flowers />;
+      case 2:
+        return <Photos />;
+      case 3:
+        return <Memoreblia />;
+      case 4:
+        return <Document />;
+      case 4:
+        return <Document />;
+      default:
+        return <Flowers />;
+    }
+  };
 
   return (
     <>
@@ -107,14 +135,32 @@ function Rip() {
               {/* Display the title dynamically */}
               <div className="add_contributer_btn_N_heading">
                 <h1 className="card-title">{post?.title || "Loading..."}</h1>
-                <button onClick={() => setShowDropdown(!showDropdown)}>
-                  Add Contributer to this rip
-                </button>
+                {/* {currentUser.data.user.roles === "sponsor" ? (
+                  <button onClick={() => setShowDropdown(!showDropdown)}>
+                    Add Contributer to this rip
+                  </button>
+                ) : (
+                  ""
+                )} */}
+                {currentUser.data.user.roles === "sponsor" ? (
+                  !isButtonClicked ? (
+                    <button
+                      onClick={() => {
+                        setShowDropdown(true);
+                        setIsButtonClicked(true); // Hide the button after click
+                      }}
+                    >
+                      Add Contributor to this RIP
+                    </button>
+                  ) : null
+                ) : null}
+
                 {showDropdown && (
                   <div>
                     <select
                       value={selectedUser}
                       onChange={(e) => setSelectedUser(e.target.value)}
+                      style={{ color: "white" }}
                     >
                       <option value="">Select a User</option>
                       {users.map((user) => (
@@ -165,32 +211,30 @@ function Rip() {
         </div>
       </div>
 
-      <div style={{ marginTop: "20px" }}>
-        <div className="row photos_memorials_document">
-          <div className="col-md-4 text-end">Photos</div>
-          <div className="col-md-4 text-center">Memoreblia</div>
-          <div className="col-md-4 text-start">Document</div>
-        </div>
-      </div>
+      <hr />
 
-      <div className="flower_sec_btn">
-        <button className="leave_flower">Leave A Flower</button>
-        <button className="say_a_prayer">Say A Prayer</button>
-      </div>
-      <div className="test">
-        <div className="flowers_section">
-          <div className="flower_card">
-            <img
-              src="https://img.freepik.com/free-photo/fruit-bouqeut-summer-forest_1303-11041.jpg?t=st=1729620483~exp=1729624083~hmac=a731f852be1ad57086f8fb303790bc51811ec183aeda215b3033d043cad45cde&w=826"
-              alt=""
-            />
-            <div className="flower_card_text">
-              <h5>Left By: </h5> <span>General Rain Candise</span>
-              <h5>On: </h5> <span>10 Oct 2024</span>
+      <div className="container">
+        <div className="row">
+          <div>
+            {/* Tab Buttons */}
+            <div className="tabs">
+              <button className="tab_btn" onClick={() => setActiveTab(1)}>
+                Flowers
+              </button>
+              <button className="tab_btn" onClick={() => setActiveTab(2)}>
+                Photos
+              </button>
+              <button className="tab_btn" onClick={() => setActiveTab(3)}>
+                Memoreblia
+              </button>
+              <button className="tab_btn" onClick={() => setActiveTab(4)}>
+                Document
+              </button>
             </div>
+
+            {/* Content of the active tab */}
+            <div className="tab-content">{renderContent()}</div>
           </div>
-          <div className="flower_card"></div>
-          <div className="flower_card"></div>
         </div>
       </div>
     </>

@@ -121,3 +121,19 @@ a:hover {
 .add_contributer_btn_N_heading button {
   border-radius: 10px;
 }
+/* ***************    searchInput    ************** */
+.searchInput:focus {
+  background-color: transparent;
+}
+.tab_btn {
+  width: 150px;
+  padding: 10 20;
+  border-radius: 5px;
+  color: #fff;
+  background-color: transparent;
+}
+.tabs {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
