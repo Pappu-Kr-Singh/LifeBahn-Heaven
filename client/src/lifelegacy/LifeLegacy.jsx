@@ -17,7 +17,7 @@ const LifeLegacy = () => {
   //     setFetching(true);
   //     try {
   //       const response = await axios.get(
-  //         `http://localhost:3000/api/v1/legacies/${_id}`,
+  //         `https://api.lifebahnheaven.com/api/v1/legacies/${_id}`,
   //         {
   //           headers: {
   //             Authorization: `Bearer ${currentUser?.data.accessToken}`, // Use access token
@@ -53,7 +53,7 @@ const LifeLegacy = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/v1/legacies`,
+          `https://api.lifebahnheaven.com/api/v1/legacies`,
           {
             headers: {
               Authorization: `Bearer ${currentUser?.data.accessToken}`,

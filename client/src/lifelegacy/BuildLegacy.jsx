@@ -99,7 +99,7 @@ const BuildLegacy = () => {
     if (!validateFormData()) return;
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/legacies",
+        "https://api.lifebahnheaven.com/api/v1/legacies",
         formData,
         {
           headers: {

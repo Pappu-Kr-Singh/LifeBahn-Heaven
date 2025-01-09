@@ -32,7 +32,7 @@ const AddPrayer = ({ onPrayerAdded }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/prayers",
+        "https://api.lifebahnheaven.com/api/v1/prayers",
         data,
         {
           headers: {

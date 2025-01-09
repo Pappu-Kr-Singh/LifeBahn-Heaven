@@ -37,7 +37,7 @@ const Document = ({ onDocumentAdded }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/documents", // Adjust endpoint if necessary
+        "https://api.lifebahnheaven.com/api/v1/documents", // Adjust endpoint if necessary
         data,
         {
           headers: {

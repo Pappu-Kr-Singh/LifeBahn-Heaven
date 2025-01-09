@@ -40,7 +40,7 @@ const Photos = ({ onPhotoAdded }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/photos",
+        "https://api.lifebahnheaven.com/api/v1/photos",
         data,
         {
           headers: {

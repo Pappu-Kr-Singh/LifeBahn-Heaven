@@ -52,7 +52,7 @@ function ProfileEdit({ handleCloseBtn }) {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/users/update-profile",
+        "https://api.lifebahnheaven.com/api/v1/users/update-profile",
         data,
         {
           headers: {

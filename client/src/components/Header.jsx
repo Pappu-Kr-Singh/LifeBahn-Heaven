@@ -13,7 +13,7 @@ const Header = ({ isAuthenticated }) => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/api/v1/users/logout",
+        "https://api.lifebahnheaven.com/api/v1/users/logout",
         {},
         {
           headers: {

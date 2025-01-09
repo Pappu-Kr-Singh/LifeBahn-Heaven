@@ -38,7 +38,7 @@
 //             );
 
 //             const response = await axios.post(
-//               "http://localhost:3000/api/v1/users/refresh-token",
+//               "https://api.lifebahnheaven.com/api/v1/users/refresh-token",
 //               { refreshToken }
 //             );
 
@@ -129,7 +129,7 @@ const useAxiosInterceptor = () => {
             );
 
             const response = await axios.post(
-              "http://localhost:3000/api/v1/users/refresh-token",
+              "https://api.lifebahnheaven.com/api/v1/users/refresh-token",
               { refreshToken }
             );
 
