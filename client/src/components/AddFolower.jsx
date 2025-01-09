@@ -40,7 +40,7 @@ const AddFlower = ({ onFlowerAdded }) => {
     data.append("postId", _id); // Pass the RIP ID (from useParams)
 
     try {
-      // http://localhost:3000
+      // http://localhost:4000
       const response = await axios.post(
         "http://localhost:3000/api/v1/flowers",
         data,
