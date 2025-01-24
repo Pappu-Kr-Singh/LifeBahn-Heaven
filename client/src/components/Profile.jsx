@@ -27,7 +27,7 @@ const Profile = () => {
       setFetching(true);
       try {
         const response = await axios.get(
-          `https://api.lifebahnheaven.com/api/v1/posts/get-sponsor-post`,
+          `http://localhost:3000/api/v1/posts/get-sponsor-post`,
           {
             headers: {
               Authorization: `Bearer ${currentUser?.data?.accessToken}`, // Use access token
@@ -50,7 +50,7 @@ const Profile = () => {
       setFetching(true);
       try {
         const response = await axios.get(
-          `https://api.lifebahnheaven.com/api/v1/posts/get-contributer-post`,
+          `http://localhost:3000/api/v1/posts/get-contributer-post`,
           {
             headers: {
               Authorization: `Bearer ${currentUser?.data.accessToken}`, // Use access token
@@ -73,14 +73,11 @@ const Profile = () => {
   }, []);
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(
-        `https://api.lifebahnheaven.com/api/v1/posts/${postId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${currentUser?.data.accessToken}`,
-          },
-        }
-      );
+      await axios.delete(`http://localhost:3000/api/v1/posts/${postId}`, {
+        headers: {
+          Authorization: `Bearer ${currentUser?.data.accessToken}`,
+        },
+      });
       setPosts(posts.filter((post) => post._id !== postId));
     } catch (error) {
       console.error("Delete error:", error);
@@ -111,7 +108,7 @@ const Profile = () => {
 
     try {
       const postRes = await axios.patch(
-        `https://api.lifebahnheaven.com/api/v1/posts/${selectedPost._id}`,
+        `http://localhost:3000/api/v1/posts/${selectedPost._id}`,
         formData,
         {
           headers: {

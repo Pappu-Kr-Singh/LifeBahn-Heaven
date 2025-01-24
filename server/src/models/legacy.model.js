@@ -7,14 +7,14 @@ const LegacySchema = new mongoose.Schema(
       ref: "User",
     },
 
-    // birthPlace: {
-    //   type: String,
-    //   required: true,
-    // },
-    // description: {
-    //   type: String,
-    //   required: true,
-    // },
+    birthPlace: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
     relationships: [
       {
         name: { type: String, required: true },

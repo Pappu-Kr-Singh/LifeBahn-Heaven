@@ -74,7 +74,7 @@ function PostEdit({ handleCloseBtn, post }) {
 
     try {
       const response = await axios.post(
-        `https://api.lifebahnheaven.com/api/v1/posts/update-post`,
+        `http://localhost:3000/api/v1/posts/update-post`,
         data,
         {
           headers: {

@@ -21,7 +21,7 @@ const UpdatePost = () => {
     try {
       if (title || description || postImg[0]) {
         const postRes = await axios.put(
-          `https://api.lifebahnheaven.com/api/v1/posts/${selectedPost._id}`,
+          `http://localhost:3000/api/v1/posts/${selectedPost._id}`,
           formData,
           {
             headers: {

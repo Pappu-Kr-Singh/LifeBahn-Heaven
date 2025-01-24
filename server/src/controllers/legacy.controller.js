@@ -4,8 +4,8 @@ const createLegacy = async (req, res) => {
   try {
     const {
       userId,
-      // birthPlace,
-      // description,
+      birthPlace,
+      description,
       relationships,
       bucketlists,
       assets,
@@ -15,8 +15,8 @@ const createLegacy = async (req, res) => {
 
     if (
       !userId ||
-      // !birthPlace ||
-      // !description ||
+      !birthPlace ||
+      !description ||
       !relationships ||
       !bucketlists ||
       !assets ||
@@ -29,8 +29,8 @@ const createLegacy = async (req, res) => {
     const newLegacy = new Legacy({
       userId,
       relationships,
-      // birthPlace,
-      // description,
+      birthPlace,
+      description,
       bucketlists,
       assets,
       aspirations,

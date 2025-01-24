@@ -40,7 +40,7 @@ const Memorablia = ({ onMemorabliaAdded }) => {
 
     try {
       const response = await axios.post(
-        "https://api.lifebahnheaven.com/api/v1/memorablias",
+        "http://localhost:3000/api/v1/memorablias",
         data,
         {
           headers: {

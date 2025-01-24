@@ -35,7 +35,7 @@ app.use("/api/v1/photos", photoRouter);
 app.use("/api/v1/documents", documentRouter);
 app.use("/api/v1/memorablias", memorabliaRouter);
 app.use("/api/v1/legacies", legacyRouter);
-// https://api.lifebahnheaven.com/api/v1/users/register
+// http://localhost:3000/api/v1/users/register
 
 app.use(errorHandler);
 export { app };

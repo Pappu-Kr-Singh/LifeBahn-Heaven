@@ -6,49 +6,80 @@ function Home() {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   return (
     <>
-      {!currentUser ? (
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 d-flex  flex-column justify-content-center hero-left">
-              <h2>Welcome to</h2>
-              <h1>LifeBahn Heaven</h1>
-              <p>
-                <span>LifeBahn</span>
-                <strong>A community for finding a better life. 🌟</strong>
-              </p>
-              <div className="d-flex">
-                <Link to="/login">
-                  <button>Become a Member</button>
-                </Link>
-                <Link to="/login">
-                  <button>Get Inspired</button>
-                </Link>
+      <div className="hero_section">
+        {!currentUser ? (
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 d-flex  flex-column justify-content-center hero-left">
+                <h2>Welcome to</h2>
+                <h1>LifeBahn Heaven</h1>
+                <p>
+                  <span>LifeBahn</span>
+                  <strong>A community for finding a better life. 🌟</strong>
+                </p>
+                <div className="d-flex">
+                  <Link to="/login">
+                    <button>Become a Member</button>
+                  </Link>
+                  <Link to="/login">
+                    <button>Get Inspired</button>
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-6 py-12 hero-right">
+                <iframe
+                  width="340"
+                  height="420"
+                  src="https://www.youtube.com/embed/PbSg2RoqW_M"
+                  title="Lifebahn Heaven"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  style={{
+                    borderRadius: "15px",
+                    overflow: "hidden",
+                  }}
+                ></iframe>
               </div>
             </div>
-            <div className="col-md-6 py-12 hero-right"></div>
           </div>
-        </div>
-      ) : (
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 d-flex flex-column justify-content-center hero-left">
-              <h2>Welcome to</h2>
-              <h1>LifeBahn Heaven</h1>
-              <p>
-                <strong>Become a Sponsor to Add your Rips 🌟</strong>
-              </p>
+        ) : (
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 d-flex flex-column justify-content-center hero-left">
+                <h2>Welcome to</h2>
+                <h1>LifeBahn Heaven</h1>
+                <p>
+                  <strong>Become a Sponsor to Add your Rips 🌟</strong>
+                </p>
 
-              <Link to="/memoriams">
-                <button className="btn btn-primary">Search Your Rips</button>
-              </Link>
+                <Link to="/memoriams">
+                  <button className="btn btn-primary font-bold">
+                    Get Inspired
+                  </button>
+                </Link>
+              </div>
+              <div className="col-md-6 py-12 hero-right">
+                <iframe
+                  width="340"
+                  height="420"
+                  src="https://www.youtube.com/embed/PbSg2RoqW_M"
+                  // title="Lifebahn Heaven"
+                  frameborder="0"
+                  allow="accelerometer; "
+                  // referrerpolicy="strict-origin-when-cross-origin"
+                  // allowfullscreen
+                  style={{
+                    borderRadius: "15px",
+                    overflow: "hidden",
+                  }}
+                ></iframe>
+              </div>
             </div>
-            <div className="col-md-6 py-12 hero-right"></div>
-            {/* <div className="col-md-6 py-12">
-              <div className="col-md-6 py-12 hero-right"></div>
-            </div> */}
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="features">
         <div className="container">

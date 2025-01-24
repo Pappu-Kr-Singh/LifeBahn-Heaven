@@ -83,6 +83,12 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
   // Attach user to the request object
   req.user = user;
 
+  try {
+    decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+  } catch (error) {
+    throw new ApiError(401, "Unauthorized Request: Invalid or expired token");
+  }
+
   // console.log(req.user._id);
 
   // Continue to the next middleware

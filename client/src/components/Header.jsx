@@ -1,19 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import axios from "axios";
-import useAxiosInterceptor from "./axiosConfig";
 
 const Header = ({ isAuthenticated }) => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useAxiosInterceptor(); // Use the interceptor hook
+  // useAxiosInterceptor(); // Use the interceptor hook
 
   const handleLogout = async () => {
     try {
       await axios.post(
-        "https://api.lifebahnheaven.com/api/v1/users/logout",
+        "http://localhost:3000/api/v1/users/logout",
         {},
         {
           headers: {
@@ -26,7 +25,7 @@ const Header = ({ isAuthenticated }) => {
       navigate("/");
     } catch (error) {
       console.error("Error during logout:", error);
-      alert("An error occurred during logout. Please try again.");
+      // alert("An error occurred during logout. Please try again.");
     }
   };
 
@@ -54,9 +53,19 @@ const Header = ({ isAuthenticated }) => {
                 <>
                   <li className="nav-item">
                     <Link to="/memoriams" className="nav-link text-black px-3">
-                      Memoriams
+                      Insirational Memoriams
                     </Link>
                   </li>
+
+                  <li className="nav-item">
+                    <Link
+                      to="/profile/life-legacy"
+                      className="nav-link text-black fw-bold px-3"
+                    >
+                      Your Legacy
+                    </Link>
+                  </li>
+
                   {currentUser.data.roles === "sponsor" && (
                     <li className="nav-item">
                       <Link
@@ -85,15 +94,6 @@ const Header = ({ isAuthenticated }) => {
                   className="nav-link text-black fw-bold px-3"
                 >
                   User Guide
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link
-                  to="/profile/life-legacy"
-                  className="nav-link text-black fw-bold px-3"
-                >
-                  Life Legacy
                 </Link>
               </li>
             </ul>

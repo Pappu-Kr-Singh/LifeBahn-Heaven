@@ -46,7 +46,7 @@ const SignUp = () => {
 
     try {
       const response = await axios.post(
-        "https://api.lifebahnheaven.com/api/v1/users/register",
+        "http://localhost:3000/api/v1/users/register",
         data,
         {
           headers: {

@@ -11,6 +11,8 @@ const BuildLegacy = () => {
 
   const [formData, setFormData] = useState({
     userId: currentUser?.data?.user?._id || "",
+    birthPlace: "", // Added field
+    description: "", // Added field
     relationships: [{ name: "", lastName: "", relationship: "" }],
     bucketlists: [{ type: "", description: "", status: "" }],
     assets: [{ item: "", description: "", value: "", beneficiaries: "" }],
@@ -26,9 +28,13 @@ const BuildLegacy = () => {
 
   const handleChange = (e, section, index) => {
     const { name, value } = e.target;
-    const updatedSection = [...formData[section]];
-    updatedSection[index][name] = value;
-    setFormData({ ...formData, [section]: updatedSection });
+    if (section) {
+      const updatedSection = [...formData[section]];
+      updatedSection[index][name] = value;
+      setFormData({ ...formData, [section]: updatedSection });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const addField = (section) => {
@@ -73,8 +79,8 @@ const BuildLegacy = () => {
   };
 
   const validateFormData = () => {
-    if (!formData.userId) {
-      alert("User ID is missing!");
+    if (!formData.userId || !formData.birthPlace || !formData.description) {
+      alert("Please fill out all required fields!");
       return false;
     }
     for (const section of [
@@ -99,7 +105,7 @@ const BuildLegacy = () => {
     if (!validateFormData()) return;
     try {
       const response = await axios.post(
-        "https://api.lifebahnheaven.com/api/v1/legacies",
+        "http://localhost:3000/api/v1/legacies",
         formData,
         {
           headers: {
@@ -119,6 +125,26 @@ const BuildLegacy = () => {
     <div className="build_legacy">
       <form className=" build_legacy_form" onSubmit={handleSubmit}>
         <h1 className="text-center bg-transparent">Build Your Legacy</h1>
+
+        {/* Personal Details Section */}
+        <h3>Personal Details</h3>
+        <div className="personal-details">
+          <input
+            type="text"
+            name="birthPlace"
+            placeholder="Birth Place"
+            value={formData.birthPlace}
+            onChange={(e) => handleChange(e)}
+            required
+          />
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={formData.description}
+            onChange={(e) => handleChange(e)}
+            required
+          />
+        </div>
 
         {/* Relationships Section */}
         <h3>Relationships</h3>
